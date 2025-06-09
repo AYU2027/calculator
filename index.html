@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Number Pad</title>
+  <style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .one {
+      width: 400px;
+      height: 500px;
+      border: 2px solid;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      background-color:#E3FDFD;
+      border: solid  5px lightblue;
+      border-radius: 18px;
+    }
+    input {
+        margin-top: 20px;
+      width: 90%;
+      height: 40px;
+      background-color: rgb(249, 249, 249);
+      text-align: end;
+      border-radius: 18px;
+      padding-right:15px ;
+
+    }
+    .b1 button {
+      width: 90px;
+      height: 40px;
+      margin: 15px;
+      border-radius: 18px ;
+      border: solid lightblue;
+      background-color: #ffff;
+      font-size: 24px;
+    }
+    .b1 button:hover{
+        background-color: #0A2647;
+        font-family: 'Courier New', Courier, monospace;
+        color: aliceblue;
+        
+    }
+  </style>
+</head>
+<body>
+
+    <h2 style="position: absolute;top: 0px; font-family: 'Courier New', Courier, monospace;text-decoration: underline;font-size: 32px;">calculator</h2>
+  <div class="one">
+    <input class="display" type="text" placeholder="" />
+    <div class="b1">
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+    </div>
+    <div class="b1">
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+    </div>
+    <div class="b1">
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+    </div>
+    <div class="b1">
+      <button>+</button>
+      <button>-</button>
+      <button>*</button>
+      
+    </div>
+    <div class="b1">
+        <button>/</button>
+      <button class="clear-btn">AC</button>
+      <button class="backspace-btn">Back</button>
+    </div>
+    <div class="b1">
+        <button class="equal-btn">=</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementsByClassName("display")[0];
+    const buttons = document.querySelectorAll("button");
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (btn.classList.contains("clear-btn")) {
+          display.value = "";
+        } else if (btn.classList.contains("backspace-btn")) {
+          display.value = display.value.slice(0, -1);
+        }else if(btn.classList.contains("equal-btn")){
+            display.value = eval(display.value);
+        }
+         else {
+          display.value += btn.innerText;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
